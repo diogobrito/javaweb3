@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+	<title>Cadastro de pratos</title>
+</head>
+<h:body>
+
+<h:form>
+
+	
+	<h:panelGrid columns="2" border="6">
+		<h:outputLabel value="Nome do prato" for="txtNome"/> 
+		<h:inputText value="#{cardapioMBean.nome}" id="txtNome" required="true" requiredMessage="Favor preencher o Nome do Prato"/>
+		
+		<h:outputLabel value="Valor" for="txtValor" /> 
+		<h:inputText value="#{cardapioMBean.valor}" id="txtValor" required="true" requiredMessage="Favor preencher o Valor">
+			<f:convertNumber locale="pt_BR"/>
+		</h:inputText>
+		<h:outputLabel value="Tipo" for="combTipo"/> 
+		<h:selectOneMenu value="#{cardapioMBean.tipo}" id="combTipo" required="true" requiredMessage="Favor selecionar o tipo do Prato" >
+			<f:selectItem itemValue="" itemLabel=" -- Selecione -- " />
+			<f:selectItem itemValue="PratoPrincipal" itemLabel="Prato Principal" />  
+			<f:selectItem itemValue="Sobremesa" itemLabel="Sobremesa" />
+		</h:selectOneMenu>
+		
+		<h:commandButton action="#{cardapioMBean.salvar()}" value="Salvar" title="Salvar" />
+		
+		<h:message />
+	</h:panelGrid>
+	
+
+</h:form>
+
+</h:body>
+
+</html>
